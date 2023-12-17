@@ -21,7 +21,7 @@ let foodX, foodY;
 let snakeX = 5,
   snakeY = 10;
 // Body queue
-let snakeBody = [];
+let snakeBody = []; // <<<<< this is the empty array that will be pushed into for the snakebody
 let velocityX = 0,
   velocityY = 0;
 
@@ -54,7 +54,7 @@ const initGame = () => {
 
   if (snakeX === foodX && snakeY === foodY) {
     changeFoodPosition();
-    snakeBody.push([foodX, foodY]); // <-- Here is the magic where we will use the push function into the array that makes up the snakes body. These 2 values on the grid X,Y will be the pushed values into the array that makes up snakebody. Console log below will allow me to see the updated array if the above if statement was true, and the push was made.
+    snakeBody.push([foodX, foodY]); // <-- Here is the magic where we will use the built in push function into the array that makes up the snakes body. These 2 values on the grid X,Y will be the pushed values into the array that makes up snakebody. Console log below will allow me to see the updated array if the above if statement was true, and the push was made.
     console.log(snakeBody);
 
     // add 10 points for every time this event happens
@@ -73,13 +73,13 @@ const initGame = () => {
   snakeX += velocityX;
   snakeY += velocityY;
 
-  // This condition says if the snake head meets any of the grid postions below which are NOT in the 30x30 grid we made,  the function inside is run which is just a basic reload, resetting the game.
+  // This condition says if the snake head meets any of the grid postions below which are NOT in the 30x30 grid we made,  the function inside is run which is just pushing the score into the array that is in Localestorage followed by a basic reload, resetting the game.
   if (snakeX <= 0 || snakeX > 30 || snakeY <= 0 || snakeY > 30) {
     // here we can save the top 5 scores into the localsession storage, and display them back later
     let topScores = JSON.parse(localStorage.getItem("topScores")) || [];
     topScores.push(score); // we save the score
     topScores.sort((a, b) => b - a); // Sort the score
-    topScores = topScores.slice(0, 5); // Keep only the top 5 scores
+    topScores = topScores.slice(0, 5); // Keep only the top 5 scores,
     //Now we can access them in the dev tools, read them back, display them back if i knew how to use inner HTML ;)
     localStorage.setItem("topScores", JSON.stringify(topScores));
     scoreBoardLocale.innerText = `Score: ${topScores}`;
