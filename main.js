@@ -1,5 +1,16 @@
 const playBoard = document.querySelector(".play-board");
 const scoreboard = document.querySelector(".score");
+const scoreBoardLocale = document.querySelector(".topScores");
+
+// Load the localestorage scores on the page load and set them in the field up top
+document.addEventListener("DOMContentLoaded", function () {
+  let topScores = JSON.parse(localStorage.getItem("topScores")) || [];
+  let topScoresHtml = "Top 5 High Scores:  ";
+  for (let i = 0; i < topScores.length; i++) {
+    topScoresHtml += `${topScores[i]} `;
+  }
+  scoreBoardLocale.innerText = topScoresHtml;
+});
 
 // Declare the score. We are going to save high scores in the localsesion storage for the extra razzle dazzle boi.
 let score = 0;
@@ -71,6 +82,7 @@ const initGame = () => {
     topScores = topScores.slice(0, 5); // Keep only the top 5 scores
     //Now we can access them in the dev tools, read them back, display them back if i knew how to use inner HTML ;)
     localStorage.setItem("topScores", JSON.stringify(topScores));
+    scoreBoardLocale.innerText = `Score: ${topScores}`;
 
     // then reset the game bc you dead.
     location.reload();
@@ -106,7 +118,7 @@ changeFoodPosition();
 
 // Speed settings. Interval must be set otherwise snake doesnt move automatically
 //initGame()
-setInterval(initGame, 200);
+setInterval(initGame, 150);
 //
 
 document.addEventListener("keydown", changeDirection);

@@ -9,7 +9,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #e3f2fd;
+  background: #101113;
 }
 
 .wrapper {
@@ -19,11 +19,12 @@ body {
   overflow: hidden;
   flex-direction: column;
   border-radius: 5px;
-  background: #293447;
+  background: #444547;
 }
 
 .game-details {
   color: #b8c6dc;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 1.2rem;
   font-weight: 500;
   padding: 20px 27px;
@@ -36,7 +37,7 @@ body {
   height: 100%;
   display: grid;
   grid-template: repeat(30, 1fr) / repeat(30, 1fr);
-  background: #212837;
+  background: rgb(44, 42, 42);
 }
 
 .play-board .food {
@@ -44,5 +45,24 @@ body {
 }
 
 .play-board .head {
-  background: darkgreen;
+  background: rgb(253, 253, 253);
+}
+
+.site {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.topScores {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 26px;
+  color: #f1e9e9;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.topScores span {
+  font-weight: bold;
+  margin-right: 5px;
 }
