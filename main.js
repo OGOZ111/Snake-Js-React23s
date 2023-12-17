@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   scoreBoardLocale.innerText = topScoresHtml;
 });
 
-// Declare the score. We are going to save high scores in the localsesion storage for the extra razzle dazzle boi.
+// Declare the score. We are going to save high scores in the localsesion storage for that extra razzle dazzle boi.
 let score = 0;
 
 //Food Pos, randomized later
@@ -22,6 +22,7 @@ let snakeX = 5,
   snakeY = 10;
 // Body queue
 let snakeBody = []; // <<<<< this is the empty array that will be pushed into for the snakebody
+
 let velocityX = 0,
   velocityY = 0;
 
@@ -49,6 +50,7 @@ const changeDirection = (e) => {
   }
 };
 
+// main game function
 const initGame = () => {
   let htmlMarkup = `<div class="food" style="grid-area: ${foodY} / ${foodX} "></div>`;
 
@@ -80,8 +82,7 @@ const initGame = () => {
     topScores.push(score); // we save the score
     topScores.sort((a, b) => b - a); // Sort the score
     topScores = topScores.slice(0, 5); // Keep only the top 5 scores,
-    //Now we can access them in the dev tools, read them back, display them back if i knew how to use inner HTML ;)
-    localStorage.setItem("topScores", JSON.stringify(topScores));
+    //Now we can access them in the dev tools, read them back, display them back.
     scoreBoardLocale.innerText = `Score: ${topScores}`;
 
     // then reset the game bc you dead.
@@ -104,9 +105,9 @@ const initGame = () => {
       topScores.push(score); // we save the score
       topScores.sort((a, b) => b - a); // Sort the score
       topScores = topScores.slice(0, 5); // Keep only the top 5 scores
-      //Now we can access them in the dev tools, read them back, display them back if i knew how to use inner HTML ;)
+      //Now we can access them in the dev tools, read them back, display them back.
       localStorage.setItem("topScores", JSON.stringify(topScores));
-
+      // then reset the game bc you dead.
       location.reload();
     }
   }
@@ -116,7 +117,7 @@ const initGame = () => {
 
 changeFoodPosition();
 
-// Speed settings. Interval must be set otherwise snake doesnt move automatically
+// Speed settings. Interval must be set otherwise snake doesnt move automatically. Lower is faster
 //initGame()
 setInterval(initGame, 150);
 //
