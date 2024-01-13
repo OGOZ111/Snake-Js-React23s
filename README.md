@@ -5,6 +5,8 @@
 
 # Snake Game using Array Push
 
+ogoz111.github.io/Snake-Js-React23s/
+
 This is a simple implementation of the classic Snake Game using HTML, CSS, and JavaScript. The game utilizes the `Array.push()` method to manage the snake's body.
 
 ## How to Play
